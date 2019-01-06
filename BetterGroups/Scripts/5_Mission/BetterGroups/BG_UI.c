@@ -77,7 +77,7 @@ class BetterGroupsUI extends UIScriptedMenu
 		UpdatePlayerList();
 		super.OnShow();
 		PPEffects.SetBlurMenu(0.5);
-		PlayerBase player = g_Game.GetPlayer();
+		PlayerBase player = PlayerBase.Cast(g_Game.GetPlayer());
 		player.GetInputController().SetDisabled(true);
 		GetGame().GetMission().PlayerControlDisable();
 		GetGame().GetUIManager().ShowUICursor(true);
@@ -114,7 +114,24 @@ class BetterGroupsUI extends UIScriptedMenu
 		if(selectedRow < 0)
 			return NULL;
 
-		return GetBetterGroups().m_BGPlayers.GetElement(selectedRow);
+		string rowPlayerName;
+
+		m_PlayerList.GetItemText(selectedRow, 0, rowPlayerName);
+
+		return GetBetterGroups().GetPlayerByName(rowPlayerName);
+	}
+
+	ref BG_GroupPlayer GetSelectedPlayer_GroupList() {
+		int selectedRow = m_GroupList.GetSelectedRow();
+
+		if(selectedRow < 0)
+			return NULL;
+
+		string rowPlayerName;
+
+		m_GroupList.GetItemText(selectedRow, 0, rowPlayerName);
+
+		return GetBetterGroups().GetPlayerByName(rowPlayerName);
 	}
 
 	
@@ -124,13 +141,14 @@ class BetterGroupsUI extends UIScriptedMenu
  
  		ButtonWidget buttonInst = ButtonWidget.Cast(w);
 
- 		if(buttonInst) {
- 			GetGame().ChatPlayer(1, "OnClick : " + buttonInst.GetName());
- 		}
-
 		
  		ref BG_GroupPlayer playerListSelectedPlayer = GetSelectedPlayer_PlayerList();
+ 		ref BG_GroupPlayer groupListSelectedPlayer = GetSelectedPlayer_GroupList();
 
+		if(buttonInst) {
+			GetGame().ChatPlayer(1, string.Format("Pressed %1. Selected playerlist player %2. Selected grouplist player %3", buttonInst.GetName(), playerListSelectedPlayer, groupListSelectedPlayer));
+ 		}
+		
     	if(w == m_AcceptButton) {
     		if(playerListSelectedPlayer)
     			Utilities.SendRPCSafe("RPC_OnAcceptInvite", new Param1< string >( playerListSelectedPlayer.m_UID ));
@@ -148,21 +166,22 @@ class BetterGroupsUI extends UIScriptedMenu
     	else if(w == m_CancelInvite) {
     		if(playerListSelectedPlayer) {
 				playerListSelectedPlayer.m_bSentInviteTo = false;
-				Utilities.SendRPCSafe("RPC_OnCancelInvitePlayer", new Param1< string >( playerListSelectedPlayer.m_UID ));
+				Utilities.SendRPCSafe("RPC_OnCancelInvite", new Param1< string >( playerListSelectedPlayer.m_UID ));
 			}
     	}
     	else if(w == m_CancelAllInvites) {
     		for(int i = 0; i < GetBetterGroups().m_BGPlayers.Count(); i++) {
 				ref BG_GroupPlayer groupPlayer = GetBetterGroups().m_BGPlayers.GetElement(i);
 				groupPlayer.m_bSentInviteTo = false;
-				Utilities.SendRPCSafe("RPC_OnCancelInvitePlayer", new Param1< string >( groupPlayer.m_UID ));
+				Utilities.SendRPCSafe("RPC_OnCancelInvite", new Param1< string >( groupPlayer.m_UID ));
 			}
     	}
     	else if(w == m_KickButton) {
-
+    		if(groupListSelectedPlayer)
+    			Utilities.SendRPCSafe("RPC_OnKickPlayer", new Param1< string >( groupListSelectedPlayer.m_UID ));
     	}
     	else if(w == m_LeaveButton) {
-
+    		Utilities.SendRPCSafe("RPC_OnLeaveGroup", new Param1< string >( "not null" ));
     	}
 
  

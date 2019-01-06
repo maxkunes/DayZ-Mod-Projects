@@ -18,6 +18,13 @@ class BG_GroupPlayer {
 		m_Player = player;
 	}
 
+	void RemoveFromGroupLocal() {
+		m_bInMyGroup = false;
+		m_bSentInviteTo = false;
+		m_bInvitedMe = false;
+		m_bGroupOwner = false;
+	}
+
 
 
 

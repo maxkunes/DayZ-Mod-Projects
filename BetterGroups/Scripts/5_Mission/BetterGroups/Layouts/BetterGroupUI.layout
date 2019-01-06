@@ -147,7 +147,7 @@ PanelWidgetClass RootContent {
        vexactsize 0
        text "Kick From Group"
       }
-      ButtonWidgetClass "Leave Group" {
+      ButtonWidgetClass LeaveButton {
        position 0 0.49
        size 0.9 0.08
        halign center_ref

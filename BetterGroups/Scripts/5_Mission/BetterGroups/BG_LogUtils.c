@@ -8,8 +8,8 @@ enum BetterGroupsLogFlags {
 enum BetterGroupsLogServerity {
 	LogServerity_NONE, 
 	LogServerity_DEBUG, // Just print to console. Basic debug info.
-	LogServerity_WARN, // Something is wrong, probably not critical though. Always Chat and console.
-	LogServerity_ERROR // Something is wrong that will probably cause a system to break and possible crash. Always Chat and console.
+	LogServerity_WARN, // Something is wrong, probably not critical though. 
+	LogServerity_ERROR // Something is wrong that will probably cause a system to break and possible crash. 
 }
 
 string ServityToString(BetterGroupsLogServerity severity) {
