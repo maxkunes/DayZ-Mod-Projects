@@ -1,0 +1,210 @@
+PanelWidgetClass RootContent {
+ clipchildren 1
+ inheritalpha 0
+ color 0.1098 0.1098 0.102 1
+ size 0.55 0.55
+ halign center_ref
+ valign center_ref
+ hexactpos 0
+ vexactpos 0
+ hexactsize 0
+ vexactsize 0
+ draggable 0
+ style DayZDefaultPanel
+ {
+  PanelWidgetClass MainContent {
+   color 0.2 0.1961 0.2196 1
+   size 0.96 0.89
+   halign center_ref
+   valign center_ref
+   hexactpos 0
+   vexactpos 0
+   hexactsize 0
+   vexactsize 0
+   draggable 0
+   style DayZDefaultPanel
+   {
+    TextWidgetClass BetterGroupsTitle {
+     visible 1
+     position 0.0041 0.01
+     size 0.83787 0.07731
+     halign center_ref
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     text "Better Groups"
+     "size to text h" 0
+     "text halign" center
+    }
+    PanelWidgetClass GroupListHolder {
+     color 0.1255 0.1216 0.1451 1
+     position 0.02 0.05
+     size 0.32 0.8
+     halign right_ref
+     valign center_ref
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     style DayZDefaultPanel
+     {
+      TextListboxWidgetClass GroupListbox {
+       position 0 0.01
+       size 0.98 0.98
+       halign center_ref
+       valign center_ref
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       style Default
+       "title visible" 1
+       colums "Name;50;Detail;50;"
+       lines 15
+      }
+     }
+    }
+    PanelWidgetClass PlayerListHolder {
+     color 0.1255 0.1216 0.1451 1
+     position 0.02 0.05
+     size 0.32 0.8
+     valign center_ref
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     style DayZDefaultPanel
+     {
+      TextListboxWidgetClass PlayerListbox {
+       position 0 0
+       size 0.98 0.98
+       halign center_ref
+       valign center_ref
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       style Default
+       "title visible" 1
+       colums "Name;50;Invite Status;50;"
+       lines 15
+      }
+     }
+    }
+    PanelWidgetClass ButtonHolder {
+     color 0.1255 0.1216 0.1451 1
+     size 0.27 0.8
+     halign center_ref
+     valign center_ref
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     style DayZDefaultPanel
+     {
+      ButtonWidgetClass AcceptInviteButton {
+       visible 1
+       disabled 0
+       ignorepointer 0
+       position 0 0.01
+       size 0.9 0.08
+       halign center_ref
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       style Default
+       text "Accept Group Invite"
+      }
+      ButtonWidgetClass RejectInviteButton {
+       position 0 0.09
+       size 0.9 0.08
+       halign center_ref
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       text "Reject Group Invite"
+      }
+      ButtonWidgetClass InviteButton {
+       position 0 0.17
+       size 0.9 0.08
+       halign center_ref
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       text "Invite To Group"
+      }
+      ButtonWidgetClass KickButton {
+       position 0 0.41
+       size 0.9 0.08
+       halign center_ref
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       text "Kick From Group"
+      }
+      ButtonWidgetClass "Leave Group" {
+       position 0 0.49
+       size 0.9 0.08
+       halign center_ref
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       text "Leave Group"
+      }
+      ButtonWidgetClass CancelInvite {
+       position 0 0.25
+       size 0.9 0.08
+       halign center_ref
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       text "Cancel Invite"
+      }
+      ButtonWidgetClass CancelAllInvites {
+       position 0 0.33
+       size 0.9 0.08
+       halign center_ref
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       text "Cancel All Invites"
+      }
+     }
+    }
+    TextWidgetClass PlayerListText {
+     position 0.02 -0.38
+     size 0.32 0.06
+     valign center_ref
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     text "Player List"
+     "text halign" center
+     "text valign" center
+    }
+    TextWidgetClass GroupListText {
+     position 0.02 -0.38
+     size 0.32 0.06
+     halign right_ref
+     valign center_ref
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     text "Group List"
+     "text halign" center
+     "text valign" center
+    }
+   }
+  }
+ }
+}

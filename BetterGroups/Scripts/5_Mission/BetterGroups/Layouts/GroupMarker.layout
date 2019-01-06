@@ -1,0 +1,29 @@
+PanelWidgetClass rootFrame {
+ visible 1
+ position 0 0
+ size 64 64
+ hexactpos 1
+ vexactpos 1
+ hexactsize 1
+ vexactsize 1
+ {
+  ImageWidgetClass imagePart {
+   position 0 0
+   size 1 1
+   hexactpos 0
+   vexactpos 0
+   hexactsize 0
+   vexactsize 0
+   image0 ""
+   imageTexture ""
+   mode blend
+   "src alpha" 1
+   "no wrap" 0
+   stretch 1
+   "flip u" 0
+   "flip v" 0
+   filter 1
+   nocache 0
+  }
+ }
+}

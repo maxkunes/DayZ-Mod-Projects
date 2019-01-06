@@ -1,0 +1,7 @@
+const int MENU_BETTERGROUPS = 95671;
+float POSITION_UPDATE_RATE = 1.0;
+
+const string BETTERGROUPS_NAMESPACE = "BetterGroups";
+const string BETTERGROUPS_INVALID_STRING = "INVALID_STRING";
+
+
