@@ -9,8 +9,6 @@ modded class MissionServer
 		GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(MonitorPlayers, 1000, true);
 		connectedUIDs = new ref array<string>();
 	}
-	
-
 
 	//Necessary as the engine functions are buggy as hell. Not efficient at all though.
 
@@ -23,8 +21,6 @@ modded class MissionServer
 	override void OnUpdate(float timeslice)
 	{
 		super.OnUpdate(timeslice);
-		
-		Print("OnUpdate");
 		
 		float curTimeSeconds = GetGame().GetTime() / 1000;
 		static float lastTime = 0;
@@ -137,6 +133,7 @@ modded class MissionServer
 	}
 
 	void BetterGroups_OnPlayerDisconnected(string UID) {
+		GetBetterGroups().OnPlayerDisconnected(UID);
 		BetterGroupsLog.DebugLog(string.Format("Player disconnected with uid %1!", UID));
 		Utilities.SendRPCSafe("RPC_OnPlayerDisconnect", new Param1<string>( UID ));
 	}

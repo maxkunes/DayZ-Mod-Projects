@@ -24,7 +24,7 @@ class BetterGroupsUI extends UIScriptedMenu
 
 	override Widget Init()
 	{
-		m_GUIRoot = GetGame().GetWorkspace().CreateWidgets("Scripts\\5_Mission\\BetterGroups\\Layouts\\BetterGroupUI.layout");
+		m_GUIRoot = GetGame().GetWorkspace().CreateWidgets("BetterGroups\\Scripts\\5_Mission\\BetterGroups\\Layouts\\BetterGroupUI.layout");
 
 		m_PlayerList = TextListboxWidget.Cast(m_GUIRoot.FindAnyWidget("PlayerListbox"));
 		m_GroupList = TextListboxWidget.Cast(m_GUIRoot.FindAnyWidget("GroupListbox"));

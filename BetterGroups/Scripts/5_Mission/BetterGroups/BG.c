@@ -84,6 +84,43 @@ class BetterGroups
 
 	}
 
+	void OnPlayerDisconnected(string UID) {
+		ref BG_Group group = GetGroup(UID);
+
+		if(group) {
+			BetterGroupsLog.WarnLog(string.Format("Disconnected player %1 was in a group. The owner is %2.",UID, group.m_Owner));
+
+			if(group.m_Owner == UID) {
+				// The player who disconnected is the owner. We need to give someone else the owner role.
+				if(group.m_Members.Count() == 1) {
+					BetterGroupsLog.ErrorLog(string.Format("Disconnected player owns a group and is the only person in it, removing the group.", UID));
+					m_Groups.Remove(m_Groups.Find(group));
+				}
+				else {
+					group.m_Owner = group.m_Members.Get(1); // Make owner the next person to join the group after the owner;
+					group.m_Members.Remove(group.m_Members.Find(UID)); // Remove the owner from the group completely.
+				}
+
+			}
+			else {
+				// The player who disconnected was just a member. We are only going to remove them.
+
+				if(group.m_Members.Count() == 1) {
+					BetterGroupsLog.ErrorLog(string.Format("Disconnected player %1 is not the owner of the group but is the only person in it.", UID));
+					m_Groups.Remove(m_Groups.Find(group));
+				}
+				else {
+					group.m_Members.Remove(group.m_Members.Find(UID));
+				}
+			}
+
+			group.OnGroupUpdate();
+		}
+		else {
+			BetterGroupsLog.WarnLog(string.Format("Disconnected player %1 was not in a group, no need to do anything.", UID));
+		}
+	}
+
 	ref BG_Group GetGroup(string UID) {
 		foreach(ref BG_Group group : m_Groups) {
 			if(group.m_Owner == UID)
